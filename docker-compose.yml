@@ -5,8 +5,12 @@ services:
     image: zelejs/allin-web:jdk11
     container_name: api
     volumes: 
+      #- ./api/config/application.yml:/webapps/config/application.yml
       - ./api/config/application-test.yml:/webapps/config/application-test.yml
       - ./api/app.jar:/webapps/app.jar
+    #command:
+    #  - /usr/local/bin/run.sh
+    #  - produce
     #ports: 
     #  - 8080:8080
 
@@ -14,3 +18,4 @@ networks:
   default:
     external: 
       name: sandbox_network
+
