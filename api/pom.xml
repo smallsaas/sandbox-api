@@ -27,6 +27,7 @@
                 <version>3.2.0</version>
                 <configuration>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <finalName>${pom.artifactId}-${pom.version}-standalone</finalName>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
