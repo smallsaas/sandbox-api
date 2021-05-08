@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose -f maven.yml run --rm maven mvn $@
+COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -f maven.yml run --rm maven mvn $@
