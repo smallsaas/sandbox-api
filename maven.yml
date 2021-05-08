@@ -5,8 +5,9 @@ services:
     container_name: mvn_sandbox
     working_dir: /usr/src
     volumes: 
-      - ./api:/usr/src
       - m2:/root/.m2
+      - ./.settings.xml:/root/.m2/settings.xml
+      - ./api:/usr/src
 
 volumes:
   m2:
