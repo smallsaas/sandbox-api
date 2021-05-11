@@ -9,7 +9,7 @@ spring:
       sql-script-encoding: UTF-8
       schema: classpath*:sql/*-schema.sql
       data: classpath*:sql/*-data.sql
-      initialize: true 
+      initialize: false 
 
 logging:
   level: debug
