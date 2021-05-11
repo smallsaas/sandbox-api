@@ -1,0 +1,26 @@
+version: "3.4"
+# COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
+services:
+  api:
+    image: api:sandbox
+    container_name: api_sandbox
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+    volumes: 
+      - ./api/config/application-dev.yml:/webapps/config/application.yml
+    ports: 
+      - 8080:8080
+
+  db: 
+    container_name: api:db
+    image: 'daocloud.io/library/mysql:5.7'
+    privileged: true
+    restart: always
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_DATABASE: 'test'
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/mysql.conf.d/sql_mode.cnf:/etc/mysql/mysql.conf.d/sql_mode.cnf

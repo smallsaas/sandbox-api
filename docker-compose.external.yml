@@ -1,0 +1,23 @@
+version: "3.4"
+# COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
+services:
+  api:
+    image: api:sandbox
+    container_name: api_sandbox
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+    volumes: 
+      - ./api/config/application-dev.yml:/webapps/config/application.yml
+    ports: 
+      - 8080:8080
+    networks: 
+      - db_network
+
+
+networks: 
+  default:
+    sandbox_api_network:
+      external: false
+  db_network:
+      external: true
