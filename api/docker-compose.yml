@@ -1,0 +1,13 @@
+version: "3.4"
+# COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
+services:
+  api:
+    image: api:sandbox
+    container_name: api_sandbox
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes: 
+      - ./config/application-dev.yml:/webapps/config/application-dev.yml
+    ports: 
+      - 8080:8080
