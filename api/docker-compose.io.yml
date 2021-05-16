@@ -1,0 +1,26 @@
+version: "3.4"
+# COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
+services:
+  api:
+    image: api:io
+    container_name: api_io
+    build:
+      context: .
+      dockerfile: ./Dockerfile.io
+    ports: 
+      - 8080:8080
+    networks: 
+      - app_default
+      - mysqlserver_default
+      
+  tool:  #docker-compose run --rm tool ping api
+    image: busybox:latest
+    networks: 
+      - app_default
+      - mysqlserver_default
+  
+networks: 
+  app_default:
+    external: true
+  mysqlserver_default: 
+    external: true

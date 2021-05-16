@@ -11,3 +11,19 @@ services:
       - ./config/application-dev.yml:/webapps/config/application-dev.yml
     ports: 
       - 8080:8080
+    networks: 
+      - app_default
+      - mysqlserver_default
+      
+  tool:  #docker-compose run --rm tool ping api
+    image: busybox:latest
+    networks: 
+      - app_default
+      - mysqlserver_default
+  
+networks: 
+  app_default:
+    external: true
+  mysqlserver_default: 
+    name: mysqlserver_default
+    external: true

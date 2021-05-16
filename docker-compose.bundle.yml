@@ -13,7 +13,7 @@ services:
       - 8080:8080
 
   db: 
-    container_name: api:db
+    container_name: api_db
     image: 'daocloud.io/library/mysql:5.7'
     privileged: true
     restart: always
@@ -24,3 +24,7 @@ services:
     volumes:
       - ./api/mysql/data:/var/lib/mysql
       - ./api/mysql/mysql.conf.d/sql_mode.cnf:/etc/mysql/mysql.conf.d/sql_mode.cnf
+
+networks: 
+  default:
+    name: app_default

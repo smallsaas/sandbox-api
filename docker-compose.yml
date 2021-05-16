@@ -1,13 +1,6 @@
-version: "3.4"
+version: "3.8"
 # COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
-services:
-  api:
-    image: api:sandbox
-    container_name: api_sandbox
-    build:
-      context: ./api
-      dockerfile: ./Dockerfile
-    volumes: 
-      - ./api/config/application-dev.yml:/webapps/config/application-dev.yml
-    ports: 
-      - 8080:8080
+
+networks: 
+  default:
+     name: app_default
